@@ -20,7 +20,7 @@ class API:
             else:
                 flag = False
                 time.sleep(5)
-        df = pd.json_normalize(df, ['data'])
+        df = pd.json_normalize(df.json(), ['data'])
         df.columns = ['time', 'open', 'close', 'high', 'low', 'trade_vol', 'trade_val']
         df = df.drop(['trade_vol', 'trade_val'], axis=1)
         df.drop(df.tail(1).index,inplace=True)
@@ -40,10 +40,15 @@ class API:
             data = data.json()['data']
             coin = []
             for i in range(len(data)):
-                coin.append(data[i]['name'])
+                if data[i]['name'][-1] == 'T':
+                    coin.append(data[i]['name'])
             return coin
 
         if self.mode == 'e':
             data = requests.get("https://api.coinex.com/v1/market/list")
             data = data.json()['data']
-            return data
+            coin = []
+            for i in range(len(data)):
+                if data[i]['name'][-1] == 'T':
+                    coin.append(data[i]['name'])
+            return coin

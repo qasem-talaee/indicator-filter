@@ -48,7 +48,7 @@ class MyStrategy(bt.Strategy):
             self.ema1 > self.ema2,
             self.ema2 > self.ema3,
             self.rsi.l.k < self.RSI_FAST_MAX,
-            self.rsi.l.d < self.self.rsi.l.k
+            self.rsi.l.d < self.rsi.l.k
         )
         self.short_signal = bt.And(
             self.last_price < self.ema1,
@@ -66,7 +66,7 @@ class MyStrategy(bt.Strategy):
             f.write(status)
     
     def next(self):
-        if self.data.close[0] == self.last_close:
+        if self.data.close[0] == self.last_price:
             if self.long_signal:
                 self.log('Long')
 
