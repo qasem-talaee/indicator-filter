@@ -6,7 +6,7 @@ This project get list of all coins in coinex.then it checks all currencies accor
 Get the project source and open terminal in source directory and enter
 
 ```bash
-python3 -m venv .venv
+python3 -m venv ./venv
 ```
 then
 ```bash
