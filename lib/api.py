@@ -49,6 +49,6 @@ class API:
             data = data.json()['data']
             coin = []
             for i in range(len(data)):
-                if data[i]['name'][-1] == 'T':
+                if data[i][-1] == 'T':
                     coin.append(data[i]['name'])
             return coin
