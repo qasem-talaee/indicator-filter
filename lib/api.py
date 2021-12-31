@@ -50,5 +50,5 @@ class API:
             coin = []
             for i in range(len(data)):
                 if data[i][-1] == 'T':
-                    coin.append(data[i]['name'])
+                    coin.append(data[i])
             return coin
